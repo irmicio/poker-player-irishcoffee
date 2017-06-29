@@ -20,7 +20,6 @@ public class Player {
     	}
     	JsonObject asJsonObject = request.getAsJsonObject();
     	JsonElement playersElement = asJsonObject.get("players");
-    	JsonElement pot = asJsonObject.get("players");
     	JsonArray asJsonArray = playersElement.getAsJsonArray();
     	
     	int myBet  = 0;
@@ -38,7 +37,11 @@ public class Player {
     		myBet = Math.max(myBet, bet.intValue());
 		}
     	myBet++;
-    	myBet = Math.min(myBet, mystack);
+    	if (myBet >= mystack)
+    	{
+    		return -1;
+    	}
+//    	myBet = Math.min(myBet, mystack);
         return myBet;
     }
 
