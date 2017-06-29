@@ -18,23 +18,27 @@ public class Player {
     	{
     		return -1;
     	}
-//    	JsonArray asJsonArray = request.getAsJsonArray();
-//    	JsonElement jsonElement = asJsonArray.get(0);
     	JsonObject asJsonObject = request.getAsJsonObject();
     	JsonElement playersElement = asJsonObject.get("players");
+    	JsonElement pot = asJsonObject.get("players");
     	JsonArray asJsonArray = playersElement.getAsJsonArray();
     	
     	int myBet  = 0;
     	
+    	int mystack = 1000;
+    	
     	for (int i = 0; i < asJsonArray.size(); i++) {
     		JsonObject jsonElement = asJsonArray.get(i).getAsJsonObject();
     		BigInteger bet = jsonElement.get("bet").getAsBigInteger();
+    		String name = jsonElement.get("name").getAsString();
+    		if (name.equals("IrishCoffee")) {
+    			mystack = jsonElement.get("stack").getAsBigInteger().intValue();
+    			continue;
+    		}
     		myBet = Math.max(myBet, bet.intValue());
 		}
-    	myBet = Math.min(myBet++, 1000);
-//    	JsonElement jsonElement = playersElement.getAsJsonObject().get("bet");
-//    	System.out.println(playersElement);
-//    	jsonElement.get
+    	myBet++;
+    	myBet = Math.min(myBet, mystack);
         return myBet;
     }
 
