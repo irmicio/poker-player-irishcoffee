@@ -60,6 +60,12 @@ public class Player {
         				myBetStep = 50;
         			}
         		}
+        		else if (isHoch(card1.get("rank").getAsString()) && isHoch(card2.get("rank").getAsString())) {
+    				myBetStep = 100;
+        		}
+        		else if (round == 2) {
+        			
+        		}
         		else {
         			return 0;
         		}
@@ -72,6 +78,10 @@ public class Player {
     		return 0;
     	}
         return myBet;
+    }
+    
+    private static boolean isHoch(String value ) {
+    	return value.equals("J") ||value.equals("Q") ||value.equals("K") ||value.equals("A");
     }
 
     public static void showdown(JsonElement game) {
