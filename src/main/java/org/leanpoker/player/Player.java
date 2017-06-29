@@ -54,22 +54,20 @@ public class Player {
         					return 0;
         				}
             			return current_buy_in;
-        			}
-        			if (found == 2 && round == 1) {
+        			} else if (found == 2 && round == 1) {
         				myBetStep = 100; 
         			}
         			else {
         				myBetStep = 50;
         			}
         		}
-    			continue;
+    			break;
     		}
-//    		myBet = Math.max(myBet, bet.intValue());
 		}
     	myBet = current_buy_in + myBetStep;
     	if (myBet >= mystack)
     	{
-    		return mystack;
+    		return 0;
     	}
         return myBet;
     }
