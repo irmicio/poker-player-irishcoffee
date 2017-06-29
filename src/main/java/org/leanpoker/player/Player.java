@@ -59,6 +59,11 @@ public class Player {
         			else {
         				myBetStep = 50;
         			}
+        			if (isHoch(card1.get("rank").getAsString()) && isHoch(card2.get("rank").getAsString())) {
+        				if (current_buy_in >= mystack) {
+        					return mystack;
+        				}
+            		}
         		}
         		else if (isHoch(card1.get("rank").getAsString()) && isHoch(card2.get("rank").getAsString())) {
     				myBetStep = 100;
