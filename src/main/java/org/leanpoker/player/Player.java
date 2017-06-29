@@ -37,7 +37,7 @@ public class Player {
         		JsonObject card1 = mycards.get(0).getAsJsonObject();
         		JsonObject card2 = mycards.get(1).getAsJsonObject();
         		if (card1.get("rank").equals(card2.get("rank"))) {
-        			return Math.max(0, mystack);
+        			return mystack;
         		}
         		if (card1.get("suit").equals(card2.get("suit"))) {
         			int found = 0;
@@ -47,7 +47,7 @@ public class Player {
         				}
 					}
         			if (found == 3) {
-            			return Math.max(0, mystack);
+            			return mystack;
         			}
         			if (found == 2 && round == 3) {
         				if (current_buy_in > mystack) {
@@ -71,7 +71,7 @@ public class Player {
     	{
     		return mystack;
     	}
-        return Math.max(0, myBet);
+        return myBet;
     }
 
     public static void showdown(JsonElement game) {
