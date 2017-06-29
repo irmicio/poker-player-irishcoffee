@@ -29,7 +29,6 @@ public class Player {
     	
     	for (int i = 0; i < asJsonArray.size(); i++) {
     		JsonObject jsonElement = asJsonArray.get(i).getAsJsonObject();
-    		BigInteger bet = jsonElement.get("bet").getAsBigInteger();
     		String name = jsonElement.get("name").getAsString();
     		if (name.equals("IrishCoffee")) {
     			mystack = jsonElement.get("stack").getAsBigInteger().intValue();
@@ -38,8 +37,8 @@ public class Player {
         		JsonObject card2 = mycards.get(1).getAsJsonObject();
         		if (card1.get("rank").equals(card2.get("rank"))) {
         			return mystack;
-        		}
-        		if (card1.get("suit").equals(card2.get("suit"))) {
+        		} 
+        		else if (card1.get("suit").equals(card2.get("suit"))) {
         			int found = 0;
         			for (int j = 0; j < comunityCards.size(); j++) {
         				if (card1.get("suit").equals(comunityCards.get(j).getAsJsonObject().get("suit").getAsString())){
@@ -60,6 +59,9 @@ public class Player {
         			else {
         				myBetStep = 50;
         			}
+        		}
+        		else {
+        			return 0;
         		}
     			break;
     		}
