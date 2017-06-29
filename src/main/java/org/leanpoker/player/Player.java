@@ -63,9 +63,6 @@ public class Player {
         		else if (isHoch(card1.get("rank").getAsString()) && isHoch(card2.get("rank").getAsString())) {
     				myBetStep = 100;
         		}
-        		else if (round == 2) {
-        			
-        		}
         		else {
         			return 0;
         		}
