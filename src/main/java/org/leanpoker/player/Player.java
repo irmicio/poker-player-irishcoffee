@@ -50,7 +50,10 @@ public class Player {
             			return Math.max(0, mystack);
         			}
         			if (found == 2 && round == 3) {
-            			return 0;
+        				if (current_buy_in > mystack) {
+        					return 0;
+        				}
+            			return current_buy_in;
         			}
         			if (found == 2 && round == 1) {
         				myBetStep = 100; 
@@ -61,12 +64,12 @@ public class Player {
         		}
     			continue;
     		}
-    		myBet = Math.max(myBet, bet.intValue());
+//    		myBet = Math.max(myBet, bet.intValue());
 		}
-    	myBet = myBet + myBetStep;
+    	myBet = current_buy_in + myBetStep;
     	if (myBet >= mystack)
     	{
-    		return Math.min(current_buy_in, mystack);
+    		return mystack;
     	}
         return Math.max(0, myBet);
     }
