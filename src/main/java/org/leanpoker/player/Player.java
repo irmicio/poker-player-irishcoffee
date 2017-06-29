@@ -31,7 +31,7 @@ public class Player {
     		BigInteger bet = jsonElement.get("bet").getAsBigInteger();
     		myBet = Math.max(myBet, bet.intValue());
 		}
-    	myBet = myBet++;
+    	myBet = Math.min(myBet++, 1000);
 //    	JsonElement jsonElement = playersElement.getAsJsonObject().get("bet");
 //    	System.out.println(playersElement);
 //    	jsonElement.get
