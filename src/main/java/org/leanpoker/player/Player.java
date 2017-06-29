@@ -32,6 +32,12 @@ public class Player {
     		String name = jsonElement.get("name").getAsString();
     		if (name.equals("IrishCoffee")) {
     			mystack = jsonElement.get("stack").getAsBigInteger().intValue();
+        		JsonArray mycards = jsonElement.get("hole_cards").getAsJsonArray();
+        		JsonObject card1 = mycards.get(0).getAsJsonObject();
+        		JsonObject card2 = mycards.get(1).getAsJsonObject();
+        		if (card1.get("rank").equals(card2.get("rank"))) {
+        			return mystack;
+        		}
     			continue;
     		}
     		myBet = Math.max(myBet, bet.intValue());
@@ -39,9 +45,8 @@ public class Player {
     	myBet++;
     	if (myBet >= mystack)
     	{
-    		return -1;
+    		return 0;
     	}
-//    	myBet = Math.min(myBet, mystack);
         return myBet;
     }
 
