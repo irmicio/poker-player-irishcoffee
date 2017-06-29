@@ -53,7 +53,7 @@ public class Player {
             			return 0;
         			}
         			if (found == 2 && round == 1) {
-        				myBetStep = 100;
+        				myBetStep = 100; 
         			}
         			else {
         				myBetStep = 50;
