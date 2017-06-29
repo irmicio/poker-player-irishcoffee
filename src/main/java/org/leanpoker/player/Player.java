@@ -10,8 +10,14 @@ import java.util.Map;
 public class Player {
 
     static final String VERSION = "Default Java folding player";
+    
+    static boolean leave = false;
 
     public static int betRequest(JsonElement request) {
+    	if (leave)
+    	{
+    		return -1;
+    	}
 //    	JsonArray asJsonArray = request.getAsJsonArray();
 //    	JsonElement jsonElement = asJsonArray.get(0);
     	JsonObject asJsonObject = request.getAsJsonObject();
@@ -25,7 +31,7 @@ public class Player {
     		BigInteger bet = jsonElement.get("bet").getAsBigInteger();
     		myBet = Math.max(myBet, bet.intValue());
 		}
-    	myBet++;
+    	myBet = myBet++;
 //    	JsonElement jsonElement = playersElement.getAsJsonObject().get("bet");
 //    	System.out.println(playersElement);
 //    	jsonElement.get
@@ -33,5 +39,6 @@ public class Player {
     }
 
     public static void showdown(JsonElement game) {
+//    	game.
     }
 }
