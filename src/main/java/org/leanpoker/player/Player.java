@@ -14,10 +14,7 @@ public class Player {
     static boolean leave = false;
 
     public static int betRequest(JsonElement request) {
-    	if (leave)
-    	{
-    		return -1;
-    	}
+
     	JsonObject asJsonObject = request.getAsJsonObject();
     	JsonElement playersElement = asJsonObject.get("players");
     	JsonArray asJsonArray = playersElement.getAsJsonArray();
